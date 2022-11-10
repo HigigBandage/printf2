@@ -6,7 +6,7 @@
 /*   By: dfinn <dfinn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:28:17 by dfinn             #+#    #+#             */
-/*   Updated: 2022/10/31 18:40:10 by dfinn            ###   ########.fr       */
+/*   Updated: 2022/11/10 15:17:18 by dfinn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-char	ft_putstr(char *str);
+int		ft_putstr(char *str);
 char	ft_putchar(char c);
-void	ft_putadress(void const *p);
+int		ft_putadress(void *p);
 void	ft_putnbr(int nb);
 
 #endif

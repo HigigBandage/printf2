@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_utils.c                                   :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfinn <dfinn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 14:14:53 by dfinn             #+#    #+#             */
-/*   Updated: 2022/10/31 18:40:07 by dfinn            ###   ########.fr       */
+/*   Created: 2022/11/10 14:37:40 by dfinn             #+#    #+#             */
+/*   Updated: 2022/11/10 15:16:30 by dfinn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (str == NULL)
+	{
+		write(1, "NULL", 5);
+		return (i);
+	}
+	while (str)
 	{
 		write(1, &str[i], 1);
 		i++;
 	}
+	return (i);
 }
 
-char	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (0);
-}
-
-void	ft_put_adress(void const *p)
+int	ft_put_adress(void *p)
 {
 	unsigned long	adr;
 	char const		*base;
@@ -55,6 +55,7 @@ void	ft_put_adress(void const *p)
 		i++;
 	}
 	write(1, "\n", 1);
+	return (1);
 }
 
 void	ft_putnbr(int nb)
