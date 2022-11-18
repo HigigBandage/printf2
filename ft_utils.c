@@ -6,11 +6,13 @@
 /*   By: dfinn <dfinn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:37:40 by dfinn             #+#    #+#             */
-/*   Updated: 2022/11/10 15:16:30 by dfinn            ###   ########.fr       */
+/*   Updated: 2022/11/18 12:31:21 by dfinn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
+#include <stdlib.h>
 
 int	ft_putstr(char *str)
 {
@@ -58,23 +60,38 @@ int	ft_put_adress(void *p)
 	return (1);
 }
 
-void	ft_putnbr(int nb)
+int	ft_print_percent(void)
 {
-	if (nb == -2147483648)
+	write(1, "%", 1);
+	return (1);
+}
+
+int	ft_printstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str == NULL)
 	{
-		write (1, "-2147483648", 11);
-		return ;
+		write(1, "NULL", 5);
+		return (0);
 	}
-	if (nb < 0)
+	while (str[i])
 	{
-		write(1, "-", 1);
-		nb -= nb;
+		write(1, &str, 1);
+		i++;
 	}
-	if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar (nb + 48);
+	return (i);
+}
+
+int	ft_print_nbr(int n)
+{
+	int		len;
+	char	*str;
+
+	len = 0;
+	str = ft_itoa(n);
+	len = ft_putstr(str);
+	free(str);
+	return (len);
 }
